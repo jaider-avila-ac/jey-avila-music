@@ -44,7 +44,7 @@ public class AuthControlador {
 		this.limitador = limitador;
 	}
 
-	/** Estado de la sesión. De paso deja lista la cookie XSRF-TOKEN que el panel envía en cada cambio. */
+	/** Estado de la sesión. De paso deja lista la cookie JEY-XSRF que el panel envía en cada cambio. */
 	@GetMapping("/api/admin/sesion")
 	public Map<String, Object> sesion(Authentication auth) {
 		boolean dentro = auth != null && auth.isAuthenticated() && auth.getAuthorities().stream()

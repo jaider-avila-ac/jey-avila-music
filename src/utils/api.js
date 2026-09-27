@@ -1,15 +1,15 @@
 // Cliente de la API del mismo sitio (Spring Boot). En desarrollo, Vite reenvía /api y /uploads
 // al backend (ver vite.config.js).
 
-// Token CSRF que el backend deja en la cookie XSRF-TOKEN; se reenvía en cada cambio
-const tokenCsrf = () => document.cookie.split('; ').find((c) => c.startsWith('XSRF-TOKEN='))?.split('=')[1]
+// Token CSRF que el backend deja en la cookie JEY-XSRF; se reenvía en cada cambio
+const tokenCsrf = () => document.cookie.split('; ').find((c) => c.startsWith('JEY-XSRF='))?.split('=')[1]
 
 /** Llama a la API y devuelve el JSON. Si falla, lanza un Error con el mensaje del backend. */
 export async function api(ruta, { metodo = 'GET', datos, archivo } = {}) {
   const opciones = { method: metodo, credentials: 'same-origin', headers: { Accept: 'application/json' } }
   if (metodo !== 'GET') {
     const token = tokenCsrf()
-    if (token) opciones.headers['X-XSRF-TOKEN'] = decodeURIComponent(token)
+    if (token) opciones.headers['X-JEY-XSRF'] = decodeURIComponent(token)
   }
   if (archivo) {
     const form = new FormData()

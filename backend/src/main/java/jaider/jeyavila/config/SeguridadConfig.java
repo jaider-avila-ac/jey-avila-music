@@ -28,14 +28,18 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 /** Seguridad: el sitio y GET /api/agenda son públicos; todo /api/admin/** exige sesión de
- *  administrador. Sesión por cookie HttpOnly y protección CSRF (cookie XSRF-TOKEN + cabecera
- *  X-XSRF-TOKEN que envía el panel). */
+ *  administrador. Sesión por cookie HttpOnly y protección CSRF (cookie JEY-XSRF + cabecera
+ *  X-JEY-XSRF que envía el panel). */
 @Configuration
 public class SeguridadConfig {
 
 	@Bean
 	public SecurityFilterChain filtros(HttpSecurity http, SecurityContextRepository contextRepository) throws Exception {
 		CookieCsrfTokenRepository csrfRepositorio = CookieCsrfTokenRepository.withHttpOnlyFalse();
+		// Nombres propios: en un mismo dominio (o en localhost) otra aplicación puede tener su propia
+		// cookie XSRF-TOKEN y el panel terminaría enviando la equivocada
+		csrfRepositorio.setCookieName("JEY-XSRF");
+		csrfRepositorio.setHeaderName("X-JEY-XSRF");
 		csrfRepositorio.setCookieCustomizer(c -> c.path("/").sameSite("Lax"));
 		CsrfTokenRequestAttributeHandler csrfManejador = new CsrfTokenRequestAttributeHandler();
 
@@ -83,7 +87,7 @@ public class SeguridadConfig {
 		res.getWriter().write("{\"mensaje\":\"" + mensaje + "\"}");
 	}
 
-	/** Genera la cookie XSRF-TOKEN en cada respuesta (el token es diferido por defecto). */
+	/** Genera la cookie JEY-XSRF en cada respuesta (el token es diferido por defecto). */
 	private static final class CookieCsrfFiltro extends OncePerRequestFilter {
 		@Override
 		protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
