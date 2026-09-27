@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Regla del sitio: siempre hay algo en movimiento (ecualizador, vinilo que gira,
+   cintas, video de fondo, ondas). Todo se detiene con "reducir movimiento".
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root { --header-h: 78px; }
+
+@keyframes entrar { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.entrar { animation: entrar .5s cubic-bezier(.2,.7,.2,1); }
+
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
+.aparecer { animation: aparecer .25s ease-out; }
+
+/* Barras de ecualizador: cada barra con su propio retraso y duración (inline) */
+@keyframes ecualizador { 0%, 100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
+.barra-eq { transform-origin: bottom; animation: ecualizador 1s ease-in-out infinite; }
+
+/* Vinilo */
+@keyframes girar { to { transform: rotate(360deg); } }
+.girar { animation: girar 7s linear infinite; }
+.girar-lento { animation: girar 30s linear infinite; }
+
+/* Cintas en movimiento: contenido duplicado que se desplaza -50% */
+@keyframes cinta { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.cinta { animation: cinta var(--cinta-dur, 30s) linear infinite; }
+.cinta-reversa { animation-direction: reverse; }
+
+/* Onda de sonido que avanza (SVG repetido) */
+@keyframes onda { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.onda { animation: onda 9s linear infinite; }
+
+/* Latido del punto "en vivo" */
+@keyframes latido { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.8); opacity: 0; } }
+.latido { position: relative; }
+.latido::after { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: currentColor; animation: latido 1.5s ease-out infinite; }
+
+/* Zoom lento de fotos */
+@keyframes respirar { 0%, 100% { transform: scale(1.03); } 50% { transform: scale(1.12); } }
+.respirar { animation: respirar 11s ease-in-out infinite; }
+@keyframes pulso { 0%, 100% { box-shadow: 0 0 0 0 theme(colors.rojo / 70%); } 70% { box-shadow: 0 0 0 12px theme(colors.rojo / 0%); } }
+.pulso { animation: pulso 1.8s ease-out infinite; }
+/* Carriles de fotos (sección de Instagram): unas columnas suben y otras bajan sin parar */
+@keyframes carril { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+.carril-sube { animation: carril var(--duracion, 40s) linear infinite; }
+.carril-baja { animation: carril var(--duracion, 40s) linear infinite reverse; }
+
+/* Rayas diagonales rojas que avanzan */
+@keyframes rayas { from { background-position: 0 0; } to { background-position: 56px 0; } }
+.rayas {
+  background-image: repeating-linear-gradient(-45deg, theme(colors.rojo / 90%) 0 14px, transparent 14px 28px);
+  background-size: 56px 56px;
+  animation: rayas 1.6s linear infinite;
+}
+.rayas-negras {
+  background-image: repeating-linear-gradient(-45deg, theme(colors.negro / 90%) 0 14px, transparent 14px 28px);
+  animation: rayas 1.6s linear infinite;
+}
+
+/* Líneas de título que suben desde una máscara */
+@keyframes subir { from { transform: translateY(110%); } to { transform: none; } }
+/* padding arriba (compensado con margen) para que las tildes de las mayúsculas no se corten */
+.mascara { display: block; overflow: hidden; padding-top: .14em; margin-top: -.14em; }
+.mascara > span { display: block; animation: subir .9s cubic-bezier(.2,.8,.2,1) both; }
+
+/* Aparición al entrar en pantalla (components/ui/Revelar.jsx) */
+.revelar { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.revelar.visible { opacity: 1; transform: none; }
+
+/* Menú de celular: panel rojo que entra desde la derecha */
+@keyframes panel { from { transform: translateX(100%); } to { transform: none; } }
+.panel-menu { animation: panel .5s cubic-bezier(.7,0,.2,1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .barra-eq, .girar, .girar-lento, .cinta, .onda, .latido::after, .respirar, .pulso, .carril-sube, .carril-baja, .rayas, .rayas-negras,
+  .mascara > span, .entrar, .panel-menu { animation: none !important; }
+  .revelar { opacity: 1; transform: none; transition: none; }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-negro text-blanco antialiased font-sans; }
+  h1, h2, h3 { @apply font-display font-extrabold leading-[1.02] tracking-tight; }
+  ::selection { @apply bg-rojo text-blanco; }
+  html { scrollbar-color: theme(colors.rojo) theme(colors.negro); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: theme(colors.negro); }
+  ::-webkit-scrollbar-thumb { background: theme(colors.rojo); }
+}
+
+@layer components {
+  .contenedor { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-10; }
+
+  .etiqueta { @apply text-[11px] font-semibold uppercase tracking-[0.3em]; }
+
+  /* Botón rojo: una franja blanca lo cruza en diagonal al pasar el mouse */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-3 overflow-hidden px-7 py-4
+           text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300;
+  }
+  .btn::before {
+    content: ''; @apply absolute inset-y-0 -left-[120%] w-[110%] -skew-x-12 transition-all duration-500;
+    transition-timing-function: cubic-bezier(.7,0,.2,1);
+  }
+  .btn:hover::before { @apply left-[-5%]; }
+  .btn > * { @apply relative z-10; }
+  .btn-rojo { @apply bg-rojo text-blanco hover:text-rojo; }
+  .btn-rojo::before { @apply bg-blanco; }
+  .btn-blanco { @apply bg-blanco text-negro hover:text-blanco; }
+  .btn-blanco::before { @apply bg-rojo; }
+  .btn-borde { @apply border border-blanco/40 text-blanco hover:text-negro; }
+  .btn-borde::before { @apply bg-blanco; }
+  .btn-negro { @apply bg-negro text-blanco hover:text-blanco; }
+  .btn-negro::before { @apply bg-rojo; }
+
+  /* Duotono rojo: la foto en grises con una capa roja; al pasar el mouse sale su color real */
+  .duotono { @apply relative overflow-hidden bg-negro; }
+  .duotono img { @apply grayscale contrast-125 transition-all duration-700; }
+  .duotono::after {
+    content: ''; @apply pointer-events-none absolute inset-0 bg-rojo mix-blend-multiply transition-opacity duration-700;
+  }
+  .group:hover .duotono img, .duotono:hover img, .group[data-activo] .duotono img { @apply grayscale-0 contrast-100 scale-105; }
+  .group:hover .duotono::after, .duotono:hover::after, .group[data-activo] .duotono::after { @apply opacity-0; }
+
+
+  .input {
+    @apply w-full border-0 border-b-2 border-blanco/20 bg-transparent px-0 py-3 text-base outline-none
+           transition-colors placeholder:text-neutral-500 focus:border-rojo;
+  }
+}
