@@ -27,12 +27,12 @@ export default function VideoYouTube({ id, titulo, className = '' }) {
           {/* Botón de play con anillo que late */}
           <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
             {/* El giro va en el contenedor: animate-ping reescribe transform y perdería el rombo */}
-            <span className="absolute w-20 h-20"><span className="block w-full h-full border-2 border-rojo animate-ping opacity-60" /></span>
-            <span className="relative w-16 h-16 bg-rojo flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-activo:scale-110">
-              <Play size={24} className="fill-blanco text-blanco translate-x-0.5" />
+            <span className="absolute w-20 h-20"><span className="block w-full h-full border-2 border-blanco animate-ping opacity-60" /></span>
+            <span className="relative w-16 h-16 bg-blanco flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-activo:scale-110">
+              <Play size={24} className="fill-negro text-negro translate-x-0.5" />
             </span>
           </span>
-          <span className="absolute left-4 bottom-4 font-display text-xl sm:text-2xl font-extrabold text-left">{titulo}</span>
+          <span className="absolute left-4 bottom-4 font-display text-xl sm:text-2xl font-extrabold text-left text-blanco">{titulo}</span>
         </button>
       )}
     </div>

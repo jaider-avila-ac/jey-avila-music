@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { ARTISTA } from '../../../data/artista'
+import { IMAGENES } from '../../../data/contenido'
 import { fechasDelAnio, formatoTelefono } from '../fechasAgenda'
 
 const LETRA_MIN = 7 // px
@@ -52,14 +53,14 @@ export default function AficheMovil({ agenda }) {
   return (
     <>
       <div className="relative left-1/2 w-screen -translate-x-1/2 h-[calc(100svh-var(--header-h))] min-h-[520px] overflow-hidden bg-negro flex flex-col">
-        {/* Foto de fondo en blanco y negro */}
-        <img src={agenda.imagen} alt="" className="absolute inset-0 w-full h-full object-cover object-top grayscale contrast-125 respirar" />
+        {/* Foto de fondo */}
+        <img src={agenda.imagen} alt="" className="absolute inset-0 w-full h-full object-cover object-top respirar" />
         <div className="absolute inset-0 bg-gradient-to-b from-negro/70 via-negro/10 to-negro" />
         <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-negro via-negro/90 to-transparent" />
 
         {/* Título */}
         <div className="relative shrink-0 pt-6 text-center">
-          <p className="etiqueta text-blanco/80">{ARTISTA.nombre}</p>
+          <img src={IMAGENES.logoBlanco} alt={ARTISTA.nombre} width="800" height="334" className="mx-auto h-12 w-auto" />
           <h2 className="mt-1 text-[15vw] min-[430px]:text-6xl font-black leading-[0.9]">
             {agenda.titulo}<br /><span className="text-rojo">{anio}</span>
           </h2>
@@ -78,7 +79,7 @@ export default function AficheMovil({ agenda }) {
                   <ul key={c} className="space-y-[0.35em]">
                     {col.map((f) => (
                       <li key={f.id}
-                        className={`font-semibold uppercase leading-tight ${f.pasada ? 'text-blanco/45 line-through decoration-rojo decoration-2' : 'text-blanco'}`}>
+                        className={`font-semibold uppercase leading-tight ${f.pasada ? 'text-blanco/45 line-through decoration-blanco decoration-2' : 'text-blanco'}`}>
                         {f.mes} {f.dia} · {f.municipio}
                       </li>
                     ))}
@@ -89,7 +90,7 @@ export default function AficheMovil({ agenda }) {
               <p ref={listaRef} className="mt-3 text-center text-neutral-300">Nuevas fechas muy pronto.</p>
             )}
             {telefono && (
-              <p className="mt-4 bg-rojo py-2 text-center font-display text-sm font-extrabold uppercase">Contacto: {telefono}</p>
+              <p className="mt-4 bg-blanco text-negro py-2 text-center font-display text-sm font-extrabold uppercase">Contacto: {telefono}</p>
             )}
           </div>
         </div>

@@ -1,13 +1,17 @@
-import Ecualizador from '../ui/Ecualizador'
+import { IMAGENES } from '../../data/contenido'
+import { ARTISTA } from '../../data/artista'
 
-/** Logo tipográfico provisional: nombre en Anton con un ecualizador que se mueve. */
-export default function Logo({ className = '' }) {
+/** Logotipo de Jey Avila (su firma): blanco para fondos oscuros, negro para fondos claros.
+ *  Es PNG (no WebP) para que se vea en cualquier Safari. */
+export default function Logo({ color = 'blanco', className = 'h-10 w-auto' }) {
   return (
-    <span className={`group inline-flex items-end gap-2 select-none ${className}`}>
-      <span className="font-display text-xl sm:text-2xl font-extrabold leading-none tracking-tight">
-        Jey <span className="text-rojo transition-colors duration-300 group-hover:text-blanco group-activo:text-blanco">Avila</span>
-      </span>
-      <Ecualizador barras={4} className="h-5 mb-0.5" grosor="w-[3px]" />
-    </span>
+    <img
+      src={color === 'negro' ? IMAGENES.logoNegro : IMAGENES.logoBlanco}
+      alt={ARTISTA.nombre}
+      width="800"
+      height="334"
+      draggable="false"
+      className={`block select-none ${className}`}
+    />
   )
 }

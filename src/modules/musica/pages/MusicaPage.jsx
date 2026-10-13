@@ -18,7 +18,7 @@ export default function MusicaPage() {
   const d = DETRAS_DE_LA_CANCION
   return (
     <>
-      <Encabezado etiqueta="Discografía" titulo="Música" bajada="Champeta para cantar, bailar y creer. Estas son sus canciones más escuchadas." imagen={IMAGENES.retratoGafas} />
+      <Encabezado etiqueta="Discografía" titulo="Música" bajada="Champeta para cantar, bailar y creer. Estas son sus canciones más escuchadas." imagen={IMAGENES.primerPlano} encuadre="object-[50%_30%]" />
 
       <section className="py-20 sm:py-28">
         <div className="contenedor grid lg:grid-cols-12 gap-12">
@@ -42,11 +42,11 @@ export default function MusicaPage() {
           <Revelar retraso={150} className="lg:col-span-7">
             <TituloSeccion claro={false} etiqueta="Detrás de la canción" titulo={d.titulo} />
             <p className="mt-8 text-xl leading-relaxed text-neutral-700">
-              <Quote size={28} className="inline -mt-2 mr-2 text-rojo" />{d.relato}
+              <Quote size={28} className="inline -mt-2 mr-2 text-neutral-400" />{d.relato}
             </p>
-            <blockquote className="mt-8 border-l-4 border-rojo pl-6">
+            <blockquote className="mt-8 border-l-4 border-negro pl-6">
               <p className="font-display text-xl sm:text-2xl font-bold leading-snug">{d.versiculo}</p>
-              <cite className="mt-3 block etiqueta not-italic text-rojo">{d.cita}</cite>
+              <cite className="mt-3 block etiqueta not-italic text-neutral-500">{d.cita}</cite>
             </blockquote>
           </Revelar>
         </div>

@@ -14,14 +14,14 @@ export default function HistoriaPage() {
   usePageMeta('Historia', 'La historia de Jey Avila: cantante y compositor de champeta de Córdoba, Colombia.')
   return (
     <>
-      <Encabezado etiqueta={ARTISTA.nombreCompleto} titulo="Historia" bajada="Desde Córdoba, un mensaje de esperanza al ritmo de la champeta." imagen={IMAGENES.retratoRojo} />
+      <Encabezado etiqueta={ARTISTA.nombreCompleto} titulo="Historia" bajada="Desde Córdoba, un mensaje de esperanza al ritmo de la champeta." imagen={IMAGENES.perfilCantando} encuadre="object-[50%_25%]" />
 
       {/* Biografía */}
       <section className="py-20 sm:py-28">
         <div className="contenedor grid lg:grid-cols-12 gap-12">
           <Revelar className="lg:col-span-5 group">
             <div className="relative">
-              <div className="duotono relative aspect-[3/4]">
+              <div className="foto relative aspect-[3/4]">
                 <img src={IMAGENES.destacada} alt={ARTISTA.nombre} className="w-full h-full object-cover" />
               </div>
             </div>
@@ -41,14 +41,14 @@ export default function HistoriaPage() {
       <section className="bg-blanco text-negro py-16 sm:py-20">
         <div className="contenedor grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-4">
-            <p className="etiqueta text-rojo">Desde los 5 años</p>
+            <p className="etiqueta text-neutral-500">Desde los 5 años</p>
             <h2 className="mt-3 text-3xl sm:text-4xl">Los instrumentos que toca</h2>
           </div>
           <ul className="lg:col-span-8 flex flex-wrap gap-3">
             {INSTRUMENTOS.map((ins, i) => (
               <Revelar as="li" key={ins} retraso={i * 60}
-                className="group flex items-center gap-3 border-2 border-negro/15 px-5 py-3 font-display text-base sm:text-lg font-bold transition-colors duration-300 hover:border-rojo activo:border-rojo hover:bg-rojo activo:bg-rojo hover:text-blanco activo:text-blanco">
-                <span className="w-2 h-2 bg-rojo transition-colors group-hover:bg-blanco group-activo:bg-blanco" aria-hidden="true" /> {ins}
+                className="group flex items-center gap-3 border-2 border-negro/15 px-5 py-3 font-display text-base sm:text-lg font-bold transition-colors duration-300 hover:border-negro activo:border-negro hover:bg-negro activo:bg-negro hover:text-blanco activo:text-blanco">
+                <span className="w-2 h-2 bg-negro transition-colors group-hover:bg-blanco group-activo:bg-blanco" aria-hidden="true" /> {ins}
               </Revelar>
             ))}
           </ul>
@@ -65,8 +65,8 @@ export default function HistoriaPage() {
               const derecha = i % 2 === 1
               return (
                 <Revelar as="li" key={h.anio} retraso={60} className={`group relative pl-12 md:pl-0 pb-12 md:w-1/2 ${derecha ? 'md:ml-auto md:pl-14' : 'md:pr-14 md:text-right'}`}>
-                  <span className={`absolute top-2 left-[8px] md:top-3 w-4 h-4 bg-rojo transition-transform duration-300 group-hover:scale-150 group-activo:scale-150 ${derecha ? 'md:-left-2' : 'md:left-auto md:-right-2'}`} />
-                  <p className="font-display text-5xl sm:text-6xl font-black leading-none text-rojo transition-colors duration-500 group-hover:text-blanco group-activo:text-blanco">{h.anio}</p>
+                  <span className={`absolute top-2 left-[8px] md:top-3 w-4 h-4 bg-blanco transition-transform duration-300 group-hover:scale-150 group-activo:scale-150 ${derecha ? 'md:-left-2' : 'md:left-auto md:-right-2'}`} />
+                  <p className="font-display text-5xl sm:text-6xl font-black leading-none text-neutral-500 transition-colors duration-500 group-hover:text-blanco group-activo:text-blanco">{h.anio}</p>
                   <h3 className="mt-2 text-2xl">{h.titulo}</h3>
                   <p className="mt-2 text-neutral-400">{h.texto}</p>
                 </Revelar>
@@ -82,12 +82,12 @@ export default function HistoriaPage() {
 
       {/* Su sueño */}
       <section className="relative overflow-hidden py-24 sm:py-32">
-        <Paralaje factor={-0.15} className="duotono absolute inset-x-0 -top-[15%] h-[130%] opacity-40" aria-hidden="true">
+        <Paralaje factor={-0.15} className="foto absolute inset-x-0 -top-[15%] h-[130%] opacity-40" aria-hidden="true">
           <img src={IMAGENES.orando} alt="" className="w-full h-full object-cover respirar" />
         </Paralaje>
         <div className="absolute inset-0 bg-negro/70" />
         <Revelar className="relative contenedor max-w-4xl text-center">
-          <p className="etiqueta text-rojo">Su sueño</p>
+          <p className="etiqueta text-neutral-300">Su sueño</p>
           <p className="mt-6 font-display text-2xl sm:text-4xl font-bold leading-snug">{SUENO}</p>
         </Revelar>
       </section>

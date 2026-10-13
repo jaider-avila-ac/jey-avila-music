@@ -27,7 +27,7 @@ export default function ClipEnVivo({ video, poster, titulo }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-negro via-transparent to-transparent" />
       <figcaption className="absolute left-4 right-4 bottom-4 flex items-center gap-2">
-        <span className="latido w-2 h-2 rounded-full bg-rojo text-rojo" />
+        <span className="latido w-2 h-2 rounded-full bg-blanco text-blanco" />
         <span className="etiqueta text-blanco">{titulo || 'En vivo'}</span>
       </figcaption>
     </figure>

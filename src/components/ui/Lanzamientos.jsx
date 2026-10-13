@@ -13,7 +13,7 @@ export default function Lanzamientos() {
           {LANZAMIENTOS.map((v, i) => (
             <Revelar key={v.id} retraso={i * 150}>
               <div className="relative">
-                <span className={`absolute -top-4 left-4 z-10 px-3 py-1.5 etiqueta ${i === 0 ? 'bg-rojo text-blanco pulso' : 'bg-blanco text-negro'}`}>
+                <span className={`absolute -top-4 left-4 z-10 px-3 py-1.5 etiqueta ${i === 0 ? 'bg-blanco text-negro pulso' : 'bg-neutral-800 text-blanco'}`}>
                   {i === 0 ? `Nuevo · ${v.anio}` : v.anio}
                 </span>
                 <VideoYouTube id={v.id} titulo={v.titulo} />

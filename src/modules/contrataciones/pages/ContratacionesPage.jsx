@@ -51,7 +51,7 @@ export default function ContratacionesPage() {
 
   return (
     <>
-      <Encabezado etiqueta="Ministerio musical" titulo="Contrataciones" bajada="Lleva a Jey Avila a tu concierto, festival, campamento o celebración." imagen={IMAGENES.estadioSincelejo} />
+      <Encabezado etiqueta="Ministerio musical" titulo="Contrataciones" bajada="Lleva a Jey Avila a tu concierto, festival, campamento o celebración." imagen={IMAGENES.estadioSincelejo} caraArriba />
 
       {/* Condiciones */}
       <section className="py-20 sm:py-28">
@@ -61,12 +61,12 @@ export default function ContratacionesPage() {
             {REQUISITOS.map((r, i) => {
               const Icono = ICONOS[i]
               return (
-                <Revelar key={r.titulo} retraso={i * 100} className="group relative overflow-hidden border-2 border-blanco/15 p-7 min-h-[220px] hover:border-rojo activo:border-rojo transition-colors duration-500">
-                  <span className="absolute inset-0 origin-bottom scale-y-0 bg-rojo transition-transform duration-500 group-hover:scale-y-100 group-activo:scale-y-100" />
+                <Revelar key={r.titulo} retraso={i * 100} className="group relative overflow-hidden border-2 border-blanco/15 p-7 min-h-[220px] hover:border-blanco activo:border-blanco transition-colors duration-500">
+                  <span className="absolute inset-0 origin-bottom scale-y-0 bg-blanco transition-transform duration-500 group-hover:scale-y-100 group-activo:scale-y-100" />
                   <div className="relative">
-                    <Icono size={30} strokeWidth={1.5} className="text-rojo transition-colors duration-500 group-hover:text-blanco group-activo:text-blanco" />
-                    <h3 className="mt-10 text-2xl">{r.titulo}</h3>
-                    <p className="mt-2 text-neutral-400 group-hover:text-blanco/85 group-activo:text-blanco/85 transition-colors duration-500">{r.texto}</p>
+                    <Icono size={30} strokeWidth={1.5} className="text-blanco transition-colors duration-500 group-hover:text-negro group-activo:text-negro" />
+                    <h3 className="mt-10 text-2xl transition-colors duration-500 group-hover:text-negro group-activo:text-negro">{r.titulo}</h3>
+                    <p className="mt-2 text-neutral-400 group-hover:text-negro/70 group-activo:text-negro/70 transition-colors duration-500">{r.texto}</p>
                   </div>
                 </Revelar>
               )
@@ -85,18 +85,17 @@ export default function ContratacionesPage() {
             <p className="mt-6 text-neutral-600 leading-relaxed">
               {composicion ? 'Te responderemos para hablar de tu idea, el género y los tiempos de entrega.' : 'Te responderemos para coordinar fecha, lugar y condiciones.'}
             </p>
-            <div className="duotono mt-10 aspect-[4/3] hidden lg:block">
-              <img src={IMAGENES.tarimaInfluencia} alt="" className="w-full h-full object-cover" />
-            </div>
+            {/* Silueta de Jey: su fondo blanco se funde con el de la sección */}
+            <img src={IMAGENES.silueta} alt="" width="628" height="628" loading="lazy" className="mt-10 hidden lg:block w-full max-w-md" />
           </div>
           <div className="lg:col-span-7">
             {hayContacto ? (
-              <form onSubmit={enviar} className="grid sm:grid-cols-2 gap-x-8 gap-y-8 [&_.input]:border-negro/20 [&_.input]:text-negro">
+              <form onSubmit={enviar} className="grid sm:grid-cols-2 gap-x-8 gap-y-8 [&_.input]:border-negro/20 [&_.input:focus]:border-negro [&_.input]:text-negro">
                 <fieldset className="sm:col-span-2">
                   <legend className="etiqueta text-neutral-500">¿Qué necesitas? *</legend>
                   <div className="mt-3 grid sm:grid-cols-2 gap-3">
                     {TIPOS.map((t) => (
-                      <label key={t.valor} className={`cursor-pointer border-2 px-4 py-3 font-display text-sm font-bold transition-colors ${form.tipo === t.valor ? 'border-rojo bg-rojo text-blanco' : 'border-negro/15 hover:border-negro activo:border-negro'}`}>
+                      <label key={t.valor} className={`cursor-pointer border-2 px-4 py-3 font-display text-sm font-bold transition-colors ${form.tipo === t.valor ? 'border-negro bg-negro text-blanco' : 'border-negro/15 hover:border-negro activo:border-negro'}`}>
                         <input type="radio" name="tipo" value={t.valor} checked={form.tipo === t.valor} onChange={set('tipo')} className="sr-only" />
                         {t.label}
                       </label>
@@ -127,7 +126,7 @@ export default function ContratacionesPage() {
                 <p className="mt-4 text-neutral-600">Mientras habilitamos el canal directo de contrataciones, puedes contactar al ministerio desde sus redes oficiales.</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   {Object.entries(ARTISTA.redes).filter(([, u]) => u).map(([red, url]) => (
-                    <a key={red} href={url} target="_blank" rel="noopener noreferrer" className="btn btn-negro capitalize"><span>{red}</span></a>
+                    <a key={red} href={url} target="_blank" rel="noopener noreferrer" className="btn btn-rojo capitalize"><span>{red}</span></a>
                   ))}
                 </div>
               </div>

@@ -3,11 +3,12 @@ const IMG = '/img'
 const VID = '/video'
 
 export const IMAGENES = {
+  // Logotipo (firma) y silueta de Jey
+  logoBlanco: `${IMG}/logo-blanco.png`,
+  logoNegro: `${IMG}/logo-negro.png`,
+  silueta: `${IMG}/silueta.jpg`,
   retratoAzul: `${IMG}/retrato-azul.webp`,
   retratoMicrofono: `${IMG}/retrato-microfono.webp`,
-  multitud: `${IMG}/multitud-luces.webp`,
-  escenario: `${IMG}/escenario-carpa.webp`,
-  guachy: `${IMG}/guachy-records.webp`,
   // Fotos de su Instagram
   destacada: `${IMG}/jey-destacada.webp`,
   retratoRojo: `${IMG}/retrato-rojo.webp`,
@@ -23,9 +24,14 @@ export const IMAGENES = {
   premioPraise: `${IMG}/premio-praise.webp`,
   praiseArtistas: `${IMG}/praise-artistas.webp`,
   orando: `${IMG}/orando.webp`,
-  publico: `${IMG}/publico.webp`,
-  enVivo1: `${IMG}/en-vivo-gorra-1.webp`,
-  enVivo2: `${IMG}/en-vivo-gorra-2.webp`,
+  // Fotos de concierto de Jalil Jalal Studio
+  tarimaManoArriba: `${IMG}/tarima-mano-arriba.webp`,
+  perfilCantando: `${IMG}/perfil-cantando.webp`,
+  tarimaBateria: `${IMG}/tarima-bateria.webp`,
+  tarimaPublico: `${IMG}/tarima-publico.webp`,
+  tarimaVictoria: `${IMG}/tarima-victoria.webp`,
+  primerPlano: `${IMG}/primer-plano.webp`,
+  tarimaSonriendo: `${IMG}/tarima-sonriendo.webp`,
 }
 
 // Videos de YouTube. VIDEOS[0] va de fondo en el hero de inicio.

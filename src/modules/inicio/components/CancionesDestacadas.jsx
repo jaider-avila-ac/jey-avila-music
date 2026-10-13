@@ -2,13 +2,16 @@ import { DESTACADAS } from '../../../data/contenido'
 import VideoYouTube from '../../../components/ui/VideoYouTube'
 import TituloSeccion from '../../../components/ui/TituloSeccion'
 import Revelar from '../../../components/ui/Revelar'
+import TiendaJey from '../../../components/ui/TiendaJey'
 
-/** Tres canciones destacadas sobre fondo blanco: la primera en grande y dos a su lado. */
+/** Arriba, los últimos productos de la tienda (sin título); debajo, tres canciones destacadas
+ *  sobre fondo blanco: la primera en grande y dos a su lado. */
 export default function CancionesDestacadas() {
   const [principal, ...resto] = DESTACADAS
   return (
     <section className="relative overflow-hidden bg-blanco text-negro py-24 sm:py-32">
       <div className="contenedor">
+        <TiendaJey className="mb-20 sm:mb-24" />
         <TituloSeccion claro={false} etiqueta="Canciones destacadas" titulo="Para escuchar una y otra vez" />
         <div className="mt-12 grid lg:grid-cols-12 gap-6">
           <Revelar className="lg:col-span-8 relative">
@@ -17,7 +20,7 @@ export default function CancionesDestacadas() {
           <div className="lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 gap-6 content-start">
             {resto.map((v, i) => (
               <Revelar key={v.id} retraso={150 + i * 120}>
-                <p className="etiqueta text-rojo mb-2">{v.tipo}</p>
+                <p className="etiqueta text-neutral-500 mb-2">{v.tipo}</p>
                 <VideoYouTube id={v.id} titulo={v.titulo} />
               </Revelar>
             ))}

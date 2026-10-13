@@ -6,7 +6,7 @@ import { useVisible } from '../../hooks/useVisible'
 export default function ReproductorSpotify({ alto = 452 }) {
   const [ref, visible] = useVisible({ umbral: 0 })
   return (
-    <div ref={ref} className="relative bg-[#121212] border-2 border-rojo" style={{ height: alto }}>
+    <div ref={ref} className="relative bg-[#121212] border border-blanco/15" style={{ height: alto }}>
       {visible && (
         <iframe
           title="Jey Avila en Spotify"

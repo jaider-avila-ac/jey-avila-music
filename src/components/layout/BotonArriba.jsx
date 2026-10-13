@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 
-/** Botón flotante para volver al inicio de la página. Aparece después de bajar un poco. */
+/** Botón flotante para volver al inicio de la página. Aparece después de bajar un poco.
+ *  Con mezcla "diferencia" queda blanco sobre lo negro y negro sobre las secciones blancas. */
 export default function BotonArriba() {
   const [visible, setVisible] = useState(false)
 
@@ -17,7 +18,7 @@ export default function BotonArriba() {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Volver arriba"
-      className={`group fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-rojo text-blanco shadow-lg shadow-black/40 transition-all duration-300 hover:bg-blanco hover:text-rojo ${
+      className={`group fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-blanco text-negro mix-blend-difference transition-all duration-300 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
     >

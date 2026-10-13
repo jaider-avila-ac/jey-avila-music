@@ -16,7 +16,7 @@ export default function VideosPage() {
   usePageMeta('Videos', 'Videos oficiales, lanzamientos, presentaciones en vivo y a capela de Jey Avila.')
   return (
     <>
-      <Encabezado etiqueta="YouTube" titulo="Videos" bajada="Videos oficiales, lanzamientos, presentaciones en vivo y a capela." imagen={IMAGENES.tarimaChaqueta} />
+      <Encabezado etiqueta="YouTube" titulo="Videos" bajada="Videos oficiales, lanzamientos, presentaciones en vivo y a capela." imagen={IMAGENES.tarimaVictoria} />
 
       <Lanzamientos />
 
@@ -27,7 +27,7 @@ export default function VideosPage() {
           <div className="mt-12 grid md:grid-cols-2 gap-8">
             {VIDEOS.map((v, i) => (
               <Revelar key={v.id} retraso={(i % 2) * 120}>
-                <p className="etiqueta text-rojo mb-3">{v.tipo}</p>
+                <p className="etiqueta text-neutral-400 mb-3">{v.tipo}</p>
                 <VideoYouTube id={v.id} titulo={v.titulo} />
               </Revelar>
             ))}

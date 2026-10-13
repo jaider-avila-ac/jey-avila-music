@@ -6,7 +6,7 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
-      // Paleta del artista: rojo, negro y blanco (y grises neutros de Tailwind)
+      // Paleta del artista: blanco y negro (y grises neutros de Tailwind)
       colors: COLORES, // se definen en tema.js
       fontFamily: {
         display: ['Unbounded', 'sans-serif'], // títulos (distinta a la de Jaider Avila Studio)

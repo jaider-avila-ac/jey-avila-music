@@ -1,21 +1,21 @@
 import Ecualizador from './Ecualizador'
 
 /** Encabezado de sección: etiqueta con ecualizador + título grande con la última palabra
- *  resaltada en rojo si hay más de una (sobre fondo rojo va toda en blanco: nunca texto negro sobre rojo). */
-export default function TituloSeccion({ etiqueta, titulo, texto, claro = true, sobreRojo = false, className = '' }) {
+ *  resaltada en rojo si hay más de una. "claro" = texto claro (sección negra); false en secciones blancas. */
+export default function TituloSeccion({ etiqueta, titulo, texto, claro = true, className = '' }) {
   const palabras = titulo.split(' ')
   const ultima = palabras.pop()
-  const colorTitulo = sobreRojo || claro ? 'text-blanco' : 'text-negro'
+  const colorTitulo = claro ? 'text-blanco' : 'text-negro'
   return (
     <div className={`max-w-3xl ${className}`}>
-      <p className={`etiqueta flex items-center gap-3 ${sobreRojo ? 'text-blanco' : 'text-rojo'}`}>
-        <Ecualizador barras={4} className="h-3" grosor="w-[2px]" color={sobreRojo ? 'bg-blanco' : 'bg-rojo'} /> {etiqueta}
+      <p className={`etiqueta flex items-center gap-3 ${claro ? 'text-neutral-400' : 'text-neutral-500'}`}>
+        <Ecualizador barras={4} className="h-3" grosor="w-[2px]" color={claro ? 'bg-blanco' : 'bg-negro'} /> {etiqueta}
       </p>
-      <h2 className={`mt-4 text-4xl sm:text-6xl ${colorTitulo}`}>
+      <h2 className={`mt-4 text-[min(2.25rem,9vw)] sm:text-6xl ${colorTitulo}`}>
         {palabras.length > 0 && `${palabras.join(' ')} `}
-        <span className={sobreRojo || palabras.length === 0 ? '' : 'text-rojo'}>{ultima}</span>
+        <span className={palabras.length === 0 ? '' : 'text-rojo'}>{ultima}</span>
       </h2>
-      {texto && <p className={`mt-5 text-lg leading-relaxed ${sobreRojo ? 'text-blanco/90' : claro ? 'text-neutral-400' : 'text-neutral-600'}`}>{texto}</p>}
+      {texto && <p className={`mt-5 text-lg leading-relaxed ${claro ? 'text-neutral-400' : 'text-neutral-600'}`}>{texto}</p>}
     </div>
   )
 }

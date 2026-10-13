@@ -12,7 +12,7 @@ export default function AgendaPage() {
 
   return (
     <>
-      <Encabezado etiqueta="Conciertos" titulo="Agenda" bajada="Próximas presentaciones en tarimas, festivales y eventos." imagen={IMAGENES.conciertoLuces} />
+      <Encabezado etiqueta="Conciertos" titulo="Agenda" bajada="Próximas presentaciones en tarimas, festivales y eventos." imagen={IMAGENES.tarimaManoArriba} />
 
       <section className="pt-6 pb-20 md:py-28">
         <div className="contenedor">

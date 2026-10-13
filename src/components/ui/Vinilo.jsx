@@ -12,9 +12,8 @@ export default function Vinilo({ imagen, className = 'w-72 h-72', lento = false 
         {/* Brillo que gira con el disco */}
         <div className="absolute inset-0 rounded-full" style={{ background: 'conic-gradient(from 0deg, transparent 0 20%, rgba(255,255,255,.10) 25%, transparent 30% 70%, rgba(255,255,255,.08) 75%, transparent 80%)' }} />
         {/* Etiqueta con la foto */}
-        <div className="absolute inset-[31%] overflow-hidden rounded-full border-4 border-rojo">
-          <img src={imagen} alt="" className="w-full h-full object-cover grayscale contrast-125" />
-          <div className="absolute inset-0 bg-rojo mix-blend-multiply" />
+        <div className="absolute inset-[31%] overflow-hidden rounded-full border-4 border-blanco">
+          <img src={imagen} alt="" className="w-full h-full object-cover" />
         </div>
         <div className="absolute left-1/2 top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-negro border border-white/30" />
       </div>

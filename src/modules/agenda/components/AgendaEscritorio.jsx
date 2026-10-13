@@ -16,7 +16,7 @@ export default function AgendaEscritorio({ agenda }) {
       <Revelar className="lg:col-span-5 lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
         <div className="relative aspect-[16/9] lg:aspect-[4/5] overflow-hidden bg-negro">
           <Paralaje factor={-0.08} className="absolute inset-x-0 -top-[8%] h-[116%]">
-            <img src={agenda.imagen} alt={ARTISTA.nombre} className="w-full h-full object-cover object-top grayscale contrast-125 respirar" />
+            <img src={agenda.imagen} alt={ARTISTA.nombre} className="w-full h-full object-cover object-top respirar" />
           </Paralaje>
           <div className="absolute inset-0 bg-gradient-to-t from-negro via-negro/20 to-negro/50" />
           <div className="absolute inset-x-0 top-0 p-8">
@@ -28,7 +28,7 @@ export default function AgendaEscritorio({ agenda }) {
       </Revelar>
 
       <div className="lg:col-span-7">
-        <p className="etiqueta flex items-center gap-3 text-rojo">
+        <p className="etiqueta flex items-center gap-3 text-neutral-400">
           <Ecualizador barras={4} className="h-3" grosor="w-[2px]" /> {fechas.length} {fechas.length === 1 ? 'presentación' : 'presentaciones'} en {anio}
         </p>
 
@@ -37,11 +37,11 @@ export default function AgendaEscritorio({ agenda }) {
             {fechas.map((f, i) => (
               <Revelar as="li" key={f.id} retraso={(i % 8) * 50}
                 className={`group flex items-center gap-5 border-b-2 border-blanco/10 py-4 ${f.pasada ? 'text-blanco/40' : ''}`}>
-                <span className={`w-14 shrink-0 text-center ${f.pasada ? '' : 'text-rojo'}`}>
-                  <span className={`block font-display text-4xl font-black leading-none ${f.pasada ? 'line-through decoration-rojo decoration-2' : ''}`}>{f.dia}</span>
+                <span className={`w-14 shrink-0 text-center ${f.pasada ? '' : 'text-blanco'}`}>
+                  <span className={`block font-display text-4xl font-black leading-none ${f.pasada ? 'line-through decoration-blanco decoration-2' : ''}`}>{f.dia}</span>
                   <span className="block etiqueta mt-1">{f.mes.slice(0, 3)}</span>
                 </span>
-                <span className={`min-w-0 font-display text-lg font-bold uppercase leading-tight ${f.pasada ? 'line-through decoration-rojo decoration-2' : 'transition-transform duration-300 group-hover:translate-x-1 group-activo:translate-x-1'}`}>
+                <span className={`min-w-0 font-display text-lg font-bold uppercase leading-tight ${f.pasada ? 'line-through decoration-blanco decoration-2' : 'transition-transform duration-300 group-hover:translate-x-1 group-activo:translate-x-1'}`}>
                   {f.municipio}
                 </span>
               </Revelar>
@@ -51,12 +51,12 @@ export default function AgendaEscritorio({ agenda }) {
           <p className="mt-6 text-lg text-neutral-400">Nuevas fechas muy pronto.</p>
         )}
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-6 bg-rojo p-6 sm:p-8">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-6 bg-blanco text-negro p-6 sm:p-8">
           <div>
-            <p className="etiqueta text-blanco/85">¿Quieres a Jey en tu evento?</p>
+            <p className="etiqueta text-neutral-500">¿Quieres a Jey en tu evento?</p>
             {telefono && <p className="mt-2 font-display text-2xl sm:text-3xl font-extrabold">Contacto: {telefono}</p>}
           </div>
-          <Link to="/contrataciones" className="btn btn-negro hover:text-negro before:!bg-blanco"><span>Solicitar una fecha</span></Link>
+          <Link to="/contrataciones" className="btn btn-rojo"><span>Solicitar una fecha</span></Link>
         </div>
       </div>
     </div>

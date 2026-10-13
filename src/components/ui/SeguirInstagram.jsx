@@ -34,7 +34,7 @@ export default function SeguirInstagram() {
       <div className="contenedor grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <Revelar className="lg:col-span-5">
           <TituloSeccion etiqueta="Redes" titulo="Síguelo en Instagram" />
-          <a {...enlace} className="mt-8 block break-all font-display text-2xl sm:text-4xl font-black transition-colors hover:text-rojo activo:text-rojo">
+          <a {...enlace} className="mt-8 block break-all font-display text-2xl sm:text-4xl font-black transition-colors hover:text-neutral-400 activo:text-neutral-400">
             {usuario(url)}
           </a>
           <p className="mt-5 text-lg leading-relaxed text-neutral-400">
@@ -53,7 +53,7 @@ export default function SeguirInstagram() {
                 {[...carril.fotos, ...carril.fotos].map((foto, i) => (
                   <a key={i} {...enlace} aria-label={`Ver ${usuario(url)} en Instagram`} tabIndex={i < carril.fotos.length ? 0 : -1}
                     className="group relative block aspect-[4/5] shrink-0 mb-3">
-                    <span className="duotono absolute inset-0 block">
+                    <span className="foto absolute inset-0 block">
                       <img src={foto} alt="" loading="lazy" className="w-full h-full object-cover" />
                     </span>
                     <span className="absolute inset-0 z-10 flex items-center justify-center bg-negro/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100">

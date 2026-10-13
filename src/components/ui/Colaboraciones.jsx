@@ -18,14 +18,14 @@ export default function Colaboraciones() {
                 href={enlaceSpotify(c.spotify)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative block overflow-hidden border-2 border-blanco/15 p-8 transition-colors duration-500 hover:border-rojo activo:border-rojo"
+                className="group relative block overflow-hidden border-2 border-blanco/15 p-8 transition-colors duration-500 hover:border-blanco activo:border-blanco"
               >
-                <span className="absolute inset-0 origin-bottom scale-y-0 bg-rojo transition-transform duration-500 ease-[cubic-bezier(.7,0,.2,1)] group-hover:scale-y-100 group-activo:scale-y-100" />
-                <span className="relative flex items-center justify-between etiqueta text-neutral-400 group-hover:text-blanco group-activo:text-blanco">
+                <span className="absolute inset-0 origin-bottom scale-y-0 bg-blanco transition-transform duration-500 ease-[cubic-bezier(.7,0,.2,1)] group-hover:scale-y-100 group-activo:scale-y-100" />
+                <span className="relative flex items-center justify-between etiqueta text-neutral-400 transition-colors duration-500 group-hover:text-negro group-activo:text-negro">
                   {ARTISTA.nombre} × {c.artista}
                   <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:rotate-45 group-activo:rotate-45" />
                 </span>
-                <span className="relative mt-10 block font-display text-3xl sm:text-4xl font-extrabold">{c.cancion}</span>
+                <span className="relative mt-10 block font-display text-3xl sm:text-4xl font-extrabold transition-colors duration-500 group-hover:text-negro group-activo:text-negro">{c.cancion}</span>
               </a>
             </Revelar>
           ))}
