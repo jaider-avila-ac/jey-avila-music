@@ -26,32 +26,19 @@ Spring Boot, que además atiende la API de la agenda y el panel **`/jeyadmin`**.
 - La primera vez que arranca, la base de datos se carga con las 18 fechas del afiche
   "Agenda 2026". Después, todo se maneja desde el panel.
 
-## Publicar en el VPS
+## Publicar (Coolify)
 
-Primera vez:
+Se despliega como un recurso "Docker Compose" de Coolify, apuntando a este repositorio
+(`docker-compose.yml` en la raíz) — igual que el backend compartido (`ecommerce`). Coolify maneja
+el certificado y el enrutamiento por dominio solo, no hace falta nginx manual.
 
-```bash
-git clone <repositorio> jey-avila && cd jey-avila
-cp .env.example .env        # y poner ADMIN_EMAIL, ADMIN_PASSWORD (mín. 10 caracteres), COOKIE_SEGURA=true
-docker compose up -d --build
-```
+1. Nueva app en Coolify → Docker Compose → este repositorio, rama `main`.
+2. Variables de entorno de la app (no van al `.env` del repo, ese nunca se sube a git):
+   `ADMIN_EMAIL`, `ADMIN_PASSWORD` (mín. 10 caracteres), `COOKIE_SEGURA=true`.
+3. Dominio de la app → el subdominio real (ej. `jeyavilamusic.com`) → Deploy.
 
-El contenedor queda en `127.0.0.1:8090` (variable `PUERTO`). En nginx, el subdominio apunta ahí:
-
-```nginx
-server {
-    server_name jey.ejemplo.com;
-    client_max_body_size 10m;
-    location / {
-        proxy_pass http://127.0.0.1:8090;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-
-Cada actualización: `git pull && docker compose up -d --build`.
+Cada actualización: push a `main` y "Deploy" desde Coolify (o el webhook automático si está
+configurado).
 
 La base de datos y las imágenes subidas viven en el volumen `jey-datos` (`/data` en el
 contenedor), así que no se pierden al actualizar. Copia de seguridad:

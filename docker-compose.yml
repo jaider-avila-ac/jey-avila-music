@@ -1,17 +1,24 @@
 # Sitio de Jey Avila (frontend + API + panel /jeyadmin) en un solo contenedor.
 #   docker compose up -d --build
-# El puerto queda solo en 127.0.0.1: se publica en el subdominio a través del proxy del VPS.
+# "expose" + la red "coolify" (igual que ecommerce/tienda/admin): Coolify enruta el dominio por
+# Traefik usando esta red, no publicando el puerto directo en el host.
 services:
   jey-avila:
     build: .
     container_name: jey-avila
     restart: unless-stopped
     env_file: .env
-    ports:
-      - "127.0.0.1:${PUERTO:-8090}:8080"
+    expose:
+      - "8080"
     volumes:
       # Base de datos de la agenda e imágenes subidas: sobreviven a cada nuevo despliegue
       - jey-datos:/data
+    networks:
+      - coolify
 
 volumes:
   jey-datos:
+
+networks:
+  coolify:
+    external: true
