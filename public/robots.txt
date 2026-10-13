@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /jeyadmin
+
+Sitemap: https://jeyavilamusic.com/sitemap.xml

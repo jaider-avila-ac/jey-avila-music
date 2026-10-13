@@ -13,7 +13,11 @@ import EnVivo from '../../../components/ui/EnVivo'
 import CtaContratar from '../../../components/ui/CtaContratar'
 
 export default function VideosPage() {
-  usePageMeta('Videos', 'Videos oficiales, lanzamientos, presentaciones en vivo y a capela de Jey Avila.')
+  usePageMeta(
+    'Videos',
+    'Videos oficiales, lanzamientos y presentaciones en vivo de Jey Avila, cantante de champeta cristiana.',
+    '/videos',
+  )
   return (
     <>
       <Encabezado etiqueta="YouTube" titulo="Videos" bajada="Videos oficiales, lanzamientos, presentaciones en vivo y a capela." imagen={IMAGENES.tarimaVictoria} />

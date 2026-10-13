@@ -11,7 +11,11 @@ import CtaContratar from '../../../components/ui/CtaContratar'
 import Paralaje from '../../../components/ui/Paralaje'
 
 export default function HistoriaPage() {
-  usePageMeta('Historia', 'La historia de Jey Avila: cantante y compositor de champeta de Córdoba, Colombia.')
+  usePageMeta(
+    'Historia',
+    'La historia de Jey Avila (Jesús Daniel Avila Sierra): cantante cristiano y compositor de champeta cristiana de Córdoba, Colombia.',
+    '/historia',
+  )
   return (
     <>
       <Encabezado etiqueta={ARTISTA.nombreCompleto} titulo="Historia" bajada="Desde Córdoba, un mensaje de esperanza al ritmo de la champeta." imagen={IMAGENES.perfilCantando} encuadre="object-[50%_25%]" />

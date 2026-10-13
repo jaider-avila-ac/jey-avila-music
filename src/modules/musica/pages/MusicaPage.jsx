@@ -14,7 +14,11 @@ import CtaContratar from '../../../components/ui/CtaContratar'
 import Merengue from '../../../components/ui/Merengue'
 
 export default function MusicaPage() {
-  usePageMeta('Música', 'Escucha las canciones de Jey Avila: Hijo de Mi Vida, Vuelvo a Creer, Lo Mío Llegará y más.')
+  usePageMeta(
+    'Música',
+    'Escucha la música cristiana de Jey Avila: Hijo de Mi Vida, Vuelvo a Creer, Lo Mío Llegará y más — champeta cristiana en Spotify y YouTube.',
+    '/musica',
+  )
   const d = DETRAS_DE_LA_CANCION
   return (
     <>

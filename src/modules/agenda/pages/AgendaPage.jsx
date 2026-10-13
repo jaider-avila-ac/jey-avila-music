@@ -7,7 +7,11 @@ import AgendaEscritorio from '../components/AgendaEscritorio'
 import AficheMovil from '../components/AficheMovil'
 
 export default function AgendaPage() {
-  usePageMeta('Agenda', 'Próximos conciertos y presentaciones de Jey Avila.')
+  usePageMeta(
+    'Agenda',
+    'Próximos conciertos y presentaciones de Jey Avila: tarimas, festivales, campamentos juveniles y eventos de iglesias.',
+    '/agenda',
+  )
   const { estado, agenda } = useAgenda()
 
   return (

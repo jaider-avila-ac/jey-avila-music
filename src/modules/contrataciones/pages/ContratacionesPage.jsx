@@ -17,7 +17,11 @@ const TIPOS = [
 ]
 
 export default function ContratacionesPage() {
-  usePageMeta('Contrataciones', 'Lleva a Jey Avila a tu evento o pídele que componga tu canción.')
+  usePageMeta(
+    'Contrataciones',
+    'Contrata a Jey Avila, cantante cristiano, para tu evento, campamento o iglesia, o pídele que componga tu canción cristiana.',
+    '/contrataciones',
+  )
   const { whatsapp, email } = ARTISTA.contacto
   const hayContacto = Boolean(whatsapp || email)
   const [form, setForm] = useState(INICIAL)
