@@ -2,8 +2,7 @@
 // fijos: cuando se suba un producto nuevo a la tienda, se agrega aquí ARRIBA (el más nuevo
 // primero) con su foto en public/img/tienda/ (.webp y .jpg de respaldo para Safari viejo).
 
-// Dirección de la tienda. PENDIENTE: cambiar por el dominio real cuando se publique.
-export const TIENDA_URL = 'http://localhost:5180'
+export const TIENDA_URL = 'https://tienda.jeyavilamusic.com'
 
 export const PRODUCTOS_TIENDA = [
   {
