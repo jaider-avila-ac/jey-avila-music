@@ -8,14 +8,14 @@ export const PRODUCTOS_TIENDA = [
   {
     nombre: 'Camiseta Oversized Jey Avila',
     detalle: 'Tallas S a XL',
-    precio: 35000,
+    precio: 45000,
     imagen: '/img/tienda/camiseta-oversized.webp',
     enlace: `${TIENDA_URL}/producto/camiseta-oversized-jey-avila`,
   },
   {
     nombre: 'Gorra Jey Avila',
     detalle: 'Talla única ajustable',
-    precio: 30000,
+    precio: 40000,
     imagen: '/img/tienda/gorra.webp',
     enlace: `${TIENDA_URL}/producto/gorra-jey-avila`,
   },
