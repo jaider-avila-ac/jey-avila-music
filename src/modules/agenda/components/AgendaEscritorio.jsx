@@ -51,10 +51,10 @@ export default function AgendaEscritorio({ agenda }) {
           <p className="mt-6 text-lg text-neutral-400">Nuevas fechas muy pronto.</p>
         )}
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-6 bg-blanco text-negro p-6 sm:p-8">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-6 border-t-2 border-blanco/10 pt-8">
           <div>
-            <p className="etiqueta text-neutral-500">¿Quieres a Jey en tu evento?</p>
-            {telefono && <p className="mt-2 font-display text-2xl sm:text-3xl font-extrabold">Contacto: {telefono}</p>}
+            <p className="etiqueta text-neutral-400">¿Quieres a Jey en tu evento?</p>
+            {telefono && <p className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-blanco">Contacto: {telefono}</p>}
           </div>
           <Link to="/contrataciones" className="btn btn-rojo"><span>Solicitar una fecha</span></Link>
         </div>

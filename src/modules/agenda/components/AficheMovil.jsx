@@ -90,7 +90,7 @@ export default function AficheMovil({ agenda }) {
               <p ref={listaRef} className="mt-3 text-center text-neutral-300">Nuevas fechas muy pronto.</p>
             )}
             {telefono && (
-              <p className="mt-4 bg-blanco text-negro py-2 text-center font-display text-sm font-extrabold uppercase">Contacto: {telefono}</p>
+              <p className="mt-4 text-blanco py-2 text-center font-display text-sm font-extrabold uppercase">Contacto: {telefono}</p>
             )}
           </div>
         </div>
